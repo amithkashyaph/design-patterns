@@ -15,4 +15,14 @@ public class TestDecorator {
 
         assertEquals(encryptedData, "Reading data decrypted");
     }
+
+    @Test
+    public void testCompressionDecoration() {
+        Datasource datasource = new FileDatasource();
+        BaseDecorator compressDecorator = new CompressDatasourceDecrator(datasource);
+
+        String compressedData = compressDecorator.read();
+
+        assertEquals(compressedData, "Reading data decompressed");
+    }
 }
